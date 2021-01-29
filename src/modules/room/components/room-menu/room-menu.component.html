@@ -1,0 +1,13 @@
+<div class="room-menu">
+  <div class="room-meanu-header">
+    <h3>Rooms</h3>
+    <!-- TODO  -->
+    <button nz-button nzType="default" nzGhost (click)="createRoom()"><i nz-icon nzType="plus"></i></button>
+  </div>
+  <!--
+    Remplacer [id de la room] par l'id de la room itérée
+  -->
+  <div class="menu-item"  *ngFor="let room of rooms" (click)="goToRoom(room)">{{room.name}}</div>
+
+</div>
+<app-room-create-modal #modal></app-room-create-modal>

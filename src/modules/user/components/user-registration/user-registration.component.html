@@ -1,0 +1,47 @@
+<div class="user-registration">
+  <form nz-form [formGroup]="registrationForm" (ngSubmit)="submit()">
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="username">Username</nz-form-label>
+      <nz-form-control [nzErrorTip]="userNameError">
+        <input class="ant-input" type="text" name="username" id="username" formControlName="username">
+          <ng-template #userNameError let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please input your username!
+            </ng-container>
+            <ng-container *ngIf="control.hasError('duplicated')">
+              The username is redundant!
+            </ng-container>
+          </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="password">Mot de passe</nz-form-label>
+      <nz-form-control [nzErrorTip]="passwordError">
+        <input nz-input class="ant-input" type="password" name="password" id="password" formControlName="password" >
+        <ng-template #passwordError let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Please input your username!
+          </ng-container>
+          <ng-container *ngIf="control.hasError('different')">
+            Password does not match
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzFor="confirm-password">Confirmation du mot de passe</nz-form-label>
+      <nz-form-control>
+        <input class="ant-input" type="password" name="confirm-password" id="confirm-password" formControlName="confirmPassword">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <button class="register-button" nz-button nzType="default" >S'enregistrer</button>
+      </nz-form-control>
+    </nz-form-item>
+
+  </form>
+  <p class="divider">Déjà enregistré ?</p>
+  <button class="login-button" nz-button nzType="primary" (click)="goToLogin()">Connectez-vous</button>
+</div>

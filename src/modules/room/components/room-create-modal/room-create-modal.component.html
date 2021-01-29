@@ -1,0 +1,18 @@
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Nouvelle room" (nzOnCancel)="onCancel()" (nzOnOk)="onOk()">
+  <form nz-form [formGroup]="createRoom" nzLayout="vertical">
+    <nz-form-item>
+      <nz-form-label nzFor="name">Nom de la room</nz-form-label>
+      <nz-form-control nzErrorTip="Nom obligatoire">
+        <input formControlName="name" class="ant-input" type="text" name="name" id="name">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzFor="name">Type</nz-form-label>
+      <nz-form-control nzErrorTip="Type obligatoire">
+        <nz-select formControlName="selector"  name="type" required>
+          <nz-option nzValue="text" nzLabel="Libre"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>

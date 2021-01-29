@@ -1,0 +1,8 @@
+<div class="notif-menu">
+    <div class="notif-item"  *ngFor="let notif of notifications" [ngStyle]="notif.unread ? { 'background-color': 'green' } : { 'background-color': 'white' }" >
+        <div class="notif-author-photo" [ngStyle]="notif.payload.user.photoUrl ? { 'background-image': 'url(' + notif.data.user.photoUrl + ')' } : {}"></div>
+        <div class="notif-subject"> {{notif.timestamp | date: 'dd/MM/yyyy'}}</div>
+        <div class="notif-subject"> {{notif.subject}}</div>
+    </div>
+</div>
+

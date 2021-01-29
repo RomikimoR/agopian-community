@@ -1,0 +1,35 @@
+<div class="login">
+  <form nz-form [formGroup]="loggingForm" (ngSubmit)="submit()">
+    <nz-form-item>
+      <nz-form-label nzFor="username">Username</nz-form-label>
+      <nz-form-control [nzErrorTip]="userNameError">
+        <input class="ant-input" type="text" name="username" id="username" formControlName="username">
+          <ng-template #userNameError let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please input your username!
+            </ng-container>
+          </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzFor="password">Mot de passe</nz-form-label>
+      <nz-form-control [nzErrorTip]="passwordError">
+        <input nz-input class="ant-input" type="password" name="password" id="password" formControlName="password" >
+        <ng-template #passwordError let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Please input your username!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <button class="login-button" type="submit" nz-button nzType="default">Connexion</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  <p class="divider">Pas encore enregistré ?</p>
+
+  <!-- TODO Rediriger sur la page de login au clic sur le bouton -->
+  <button class="register-button" nz-button nzType="primary" (click)="goToRegistration()">Créer un compte</button>
+</div>

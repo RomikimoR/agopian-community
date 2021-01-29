@@ -1,0 +1,33 @@
+<div class="post">
+  <div class="post-author-name">
+    {{post.createdBy.username}}
+  </div>
+
+  <div class="post-author-photo" [ngStyle]="post.createdBy.photoUrl ? { 'background-image': 'url(' + post.createdBy.photoUrl + ')' } : {}"></div>
+  <div class="post-date">{{post.createdAt | formatDate }}</div>
+
+  <!-- TIPS: [ngClass]="{'fill':post.liked, 'outline':!post.liked}" -->
+  <div class="post-user-like">
+    <i nz-icon nzType="heart" [nzTheme]="post.liked ? 'fill' : 'outline'" (click)='like()'>
+    </i>
+  </div>
+
+  <p class="post-text" *ngIf="post.message.attachements.length == 0" [innerHTML]="colorMention">   </p>
+  <!-- Itérer sur les "attachements" du message -->
+  <div class="post-attachements" *ngFor="let element of post.message.attachements">
+    <ng-container [ngSwitch]="element.type">
+      <ng-container *ngSwitchCase="'image'">
+        <a [href]="element.url">Go to image </a>
+        <app-post-attachement-image [element]="element"></app-post-attachement-image>
+      </ng-container>
+      <ng-container *ngSwitchCase="'video'">
+        <a [href]="element.url">Go to video</a>
+        <app-post-attachement-video [element]="element"></app-post-attachement-video>
+      </ng-container>
+      <ng-container *ngSwitchCase="'youtube'">
+        <app-post-attachement-youtube [element]="element"></app-post-attachement-youtube>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div #anchor></div>
+</div>
